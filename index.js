@@ -412,6 +412,7 @@ async function startNazeBot() {
 				console.log(chalk.greenBright(`[SHOLAT] Jadwal sholat hari ini (${global._jadwalSholatDate}): Subuh ${t.Fajr}, Dzuhur ${t.Dhuhr}, Ashar ${t.Asr}, Maghrib ${t.Maghrib}, Isya ${t.Isha}`));
 			}
 		} catch (e) {
+			global._jadwalSholatDate = moment.tz(global.timezone).format('YYYY-MM-DD');
 			console.error(chalk.redBright('[SHOLAT] Gagal fetch jadwal sholat dari API, pakai jadwal default:'), e.message);
 		}
 	}
