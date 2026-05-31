@@ -45,12 +45,13 @@ const userInfoSyt = () => {
 	}
 }
 
-// try {
-// 	dns.setServers(['8.8.8.8', '1.1.1.1']);
-// 	console.log(chalk.yellowBright('[SYSTEM] Custom DNS Google & Cloudflare.'));
-// } catch (e) {
-// 	console.log(chalk.yellowBright('[SYSTEM] failed to custom DNS:'), e.message);
-// }
+try {
+	dns.setDefaultResultOrder('ipv4first');
+	dns.setServers(['8.8.8.8', '1.1.1.1']);
+	console.log(chalk.yellowBright('[SYSTEM] Custom DNS Google & Cloudflare (IPv4 preferred).'));
+} catch (e) {
+	console.log(chalk.yellowBright('[SYSTEM] failed to custom DNS:'), e.message);
+}
 
 // Fetch Api
 global.fetchApi = async (endpoint = '/', data = {}, options = {}) => {
