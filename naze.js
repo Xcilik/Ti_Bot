@@ -6049,6 +6049,9 @@ ${(isCreator && !m.isGroup) ? `│${setv} ${prefix}jadibot 🔸️\n│${setv} $
 │${setv} ${prefix}delete (reply pesan)
 │${setv} ${prefix}linkgrup
 │${setv} ${prefix}revoke
+│${setv} ${prefix}reminder
+│${setv} ${prefix}reminderall
+│${setv} ${prefix}remindersolat
 │${setv} ${prefix}tagall
 │${setv} ${prefix}pin
 │${setv} ${prefix}unpin
@@ -6136,7 +6139,7 @@ ${(isCreator && !m.isGroup) ? `│${setv} ${prefix}jadibot 🔸️\n│${setv} $
 │${setv} ${prefix}getexif (reply sticker)
 ╰─┬────❍
 ╭─┴❍「 *AI* 」❍
-│${setv} ${prefix}ai (query)
+│${setv} ${prefix}ai / Ti / ti (query)
 │${setv} ${prefix}gemini (query)
 │${setv} ${prefix}glm (query)
 │${setv} ${prefix}grok (query)
