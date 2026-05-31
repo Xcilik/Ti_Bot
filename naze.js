@@ -244,7 +244,7 @@ const nazeHandler = async (naze, m, msg, store) => {
 		const listMatch = global.listprefix.find(a => body?.startsWith(a));
 		const detectedPrefix = symbolMatch ? symbolMatch[0] : (emojiMatch ? emojiMatch[0] : listMatch);
 		const prefix = isCreator ? (detectedPrefix || set.authorPrefix) : set.multiprefix ? (detectedPrefix || '¿') : (listMatch || '¿');
-		const isCmd = body.startsWith(prefix)
+		const isCmd = body.startsWith(prefix) && (!m.key.fromMe || !naze.public)
 		const args = body.trim().split(/ +/).slice(1)
 		const quoted = m.quoted ? m.quoted : m
 		const command = isCmd ? body.replace(prefix, '').trim().split(/ +/).shift().toLowerCase() : '';
@@ -596,7 +596,7 @@ const nazeHandler = async (naze, m, msg, store) => {
 		}
 		
 		// No-prefix "ti" trigger for AI
-		if (!isCmd && /^ti\s+/i.test(budy)) {
+		if (!isCmd && !m.key.fromMe && /^ti\s+/i.test(budy)) {
 			const tiQuery = budy.replace(/^ti\s+/i, '').trim();
 			if (tiQuery.length > 0) {
 				// Build context
@@ -6049,9 +6049,6 @@ ${(isCreator && !m.isGroup) ? `│${setv} ${prefix}jadibot 🔸️\n│${setv} $
 │${setv} ${prefix}delete (reply pesan)
 │${setv} ${prefix}linkgrup
 │${setv} ${prefix}revoke
-│${setv} ${prefix}reminder
-│${setv} ${prefix}reminderall
-│${setv} ${prefix}remindersolat
 │${setv} ${prefix}tagall
 │${setv} ${prefix}pin
 │${setv} ${prefix}unpin
@@ -6139,7 +6136,7 @@ ${(isCreator && !m.isGroup) ? `│${setv} ${prefix}jadibot 🔸️\n│${setv} $
 │${setv} ${prefix}getexif (reply sticker)
 ╰─┬────❍
 ╭─┴❍「 *AI* 」❍
-│${setv} ${prefix}ai / Ti / ti (query)
+│${setv} ${prefix}ai (query)
 │${setv} ${prefix}gemini (query)
 │${setv} ${prefix}glm (query)
 │${setv} ${prefix}grok (query)
